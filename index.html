@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile</title>
+<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://kit.fontawesome.com/68bb695166.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css">
+<style>
+.closed_site{
+	/*color: black !important;*/
+	text-decoration: none !important;
+	cursor:default !important;
+}
+</style>
+
+</head>
+<body>
+<div class="container" id="loading_msg" style="font-weight:bold;">
+	<div class="row">
+		<div class="col text-center mt-5 font-italic">Now Loading.......</div>
+	</div>
+</div>
+
+<div id="app" class="container" style="display:none;">
+<div class="row mt-5 div-section first">
+	<div class="col-5 col-md-2 font-italic">
+		<h4 class="mb-0"><i class="fas fa-layer-group mr-2"></i> {{sections[0].title}}</h4>
+	</div>
+	<div class="col-7 col-md-10 font-italic section-detail">
+		{{sections[0].detail}}
+	</div>
+	<div class="col col-md-12 py-3" ref-class="bg-light" v-html="about">
+	</div>
+</div>
+
+<hr/>
+
+<div class="row mt-5 div-section second">
+	<div class="col-5 col-md-2 font-italic">
+		<h4 class="mb-0"><i class="fas fa-layer-group mr-2"></i> {{sections[1].title}}</h4>
+	</div>
+	<div class="col-7 col-md-10 font-italic section-detail">
+		{{sections[1].detail}}
+	</div>
+</div>
+
+
+
+<site-list :sites="sites" @openurl="open_link"></site-list>
+
+<hr/>
+
+
+<div class="row mt-5 div-section third">
+	<div class="col-5 col-md-2 font-italic">
+		<h4 class="mb-0"><i class="fas fa-layer-group mr-2"></i> {{sections[2].title}}</h4>
+	</div>
+	<div class="col-7 col-md-10 font-italic section-detail">
+		{{sections[2].detail}}
+	</div>
+</div>
+
+
+<writings-component :writings="writings" @openurl="open_link"></writings-component>
+
+
+
+
+</div>
+<script>
+toastr.options = {
+	"closeButton": true,
+	"newestOnTop": false,
+	"positionClass": "toast-top-center",
+	"timeOut": "1000",
+	"extendedTimeOut": "1000"
+};
+</script>
+
+<script>
+function applyVue(){
+	new Vue({
+		el:"#app",
+		data(){
+			return {
+				sections: [],
+				about: "",
+				sites: [] ,
+				writings: [],
+			}
+		},
+		created(){
+			this.sections = sectionsData;
+			this.about = aboutData;
+			this.sites = portfolioData;
+			this.writings = writingsData;
+		},
+		mounted(){
+			document.getElementById("app").style.display="block";
+			document.getElementById("loading_msg").style.display="none";
+
+			$('.div-section').eq(0).attr( 'style', 'margin-bottom:100px !important' );	
+			$('.div-section').eq(1).attr( 'style', 'margin-top:100px !important' );
+			$('.div-section').eq(2).attr( 'style', 'margin-top:200px !important' );
+			/*
+			$('.div-section').eq(0)[0].style.setProperty('margin-bottom', '100px', 'important');
+			$('.div-section').eq(1)[0].style.setProperty('margin-top', '100px', 'important');
+			$('.div-section').eq(2)[0].style.setProperty('margin-top', '200px', 'important');	
+			*/
+		},
+
+		methods:{
+			open_link(url, isopen){
+
+				if(!isopen){
+					toastr.error("Thie site is closed").css({
+							"border": "white 1px solid"
+					});	
+					return false;
+				}
+
+				var winName = Array.from({ length: 10 }, () => String.fromCharCode(65 + Math.floor(Math.random() * 26))).join('');
+				window.open(url, winName, "");
+			},
+			
+		}
+	});
+
+	
+
+}
+</script>
+<script>
+const ver = Date.now();
+
+function loadCSS(url) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = `${url}?v=${ver}`;
+    document.head.appendChild(link);
+}
+
+loadCSS("./portfolio.css");
+
+function loadJS(url) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = `${url}?v=${ver}`;
+
+        script.onload = resolve;
+        script.onerror = reject;
+
+        document.body.appendChild(script);
+    });
+}
+
+async function init(callback) {
+    try {
+
+		await loadJS("./data/section-header.data.js");
+		await loadJS("./data/about.data.js");
+		await loadJS("./data/portfolio.data.js");
+		await loadJS("./data/writings.data.js");
+
+		await loadJS("./components/SiteItem.js");
+		await loadJS("./components/SiteList.js");
+		await loadJS("./components/WritingsComponent.js");
+        
+		callback();
+
+
+
+    } catch (err) {
+        console.error("JS load error:", err);
+    }
+}
+
+init(applyVue);
+</script>
+</body>
+</html>

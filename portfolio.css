@@ -1,0 +1,64 @@
+.card{
+	min-height:360px;
+	margin-bottom:30px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+}
+.card img{
+	min-height:180px;
+	max-height:200px;
+}
+.div-book-img{
+	padding-bottom:10px;
+}
+
+
+.div-section {
+    align-items: center;
+}
+
+@media (min-width: 576px) {
+    .div-section {
+        align-items: flex-end;
+    }
+}
+
+/*
+.div-section.first{
+	margin-bottom:50px !important;
+}
+
+.div-section.second{
+	margin-top:100px !important;
+}
+
+.div-section.third{
+	margin-top:200px !important;
+}
+*/
+
+.span_link{
+	cursor:pointer;
+	color:#3590bb;
+}
+.span_link:hover{
+	text-decoration:underline;
+}
+
+.span_link2{
+	cursor:pointer;
+}
+
+.span_link3{
+	cursor:pointer;
+	color:#3590bb;
+}
+.span_link3:hover{
+	text-decoration:underline;
+}
+.section-detail{
+	font-size:1em;
+}
+.div-section h4{
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+	 /*text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #00ffff, 0 0 40px #00ffff;*/
+}
