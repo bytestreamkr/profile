@@ -166,7 +166,7 @@ var portfolioData = [
 	},
 	{
 		id:"erp",
-		title:"기업 ERP",
+		title:"ERP 유지보수",
 		url:"",
 		img:"img/site/erp.jpg",
 		detail:"Java/JSP 기반의 ERP 유지보수",
