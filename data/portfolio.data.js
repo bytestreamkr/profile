@@ -43,7 +43,15 @@ var portfolioData = [
 		detail:"대구광역시환경교육센터",
 		isopen: true
 	},
-
+	
+	{
+		id:"erp",
+		title:"ERP 유지보수",
+		url:"",
+		img:"img/site/erp.jpg",
+		detail:"Java/JSP 기반의 ERP 유지보수",
+		isopen: false
+	},
 
 	{
 		id:"cgjob.kr",
@@ -164,13 +172,6 @@ var portfolioData = [
 		detail:"디지털 청년 인재 등용문 사업",
 		isopen: true
 	},
-	{
-		id:"erp",
-		title:"ERP 유지보수",
-		url:"",
-		img:"img/site/erp.jpg",
-		detail:"Java/JSP 기반의 ERP 유지보수",
-		isopen: false
-	},
+
 
 ];
