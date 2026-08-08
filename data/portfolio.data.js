@@ -164,6 +164,13 @@ var portfolioData = [
 		detail:"디지털 청년 인재 등용문 사업",
 		isopen: true
 	},
-
+	{
+		id:"erp",
+		title:"기업 ERP",
+		url:"",
+		img:"img/site/erp.jpg",
+		detail:"Java/JSP 기반의 ERP 유지보수",
+		isopen: false
+	},
 
 ];
