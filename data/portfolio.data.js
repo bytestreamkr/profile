@@ -107,7 +107,7 @@ var portfolioData = [
 		title:"약업도매",
 		url:"http://yakupdome.co.kr",
 		img:"img/site/yakupdome.co.kr.jpg",
-		detail:"약품도매상 프로그램 개발업체(VB, Access)",
+		detail:"약품도매상 프로그램 개발업체(ASP, MsSQL)",
 		isopen: true
 	},
 
