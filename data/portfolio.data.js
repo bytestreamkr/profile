@@ -27,6 +27,15 @@ var portfolioData = [
 	},
 
 	{
+		id:"erp",
+		title:"ERP 유지보수",
+		url:"",
+		img:"img/site/erp.jpg",
+		detail:"Java/JSP 기반의 ERP 유지보수",
+		isopen: false
+	},
+
+	{
 		id:"dgreturn.or.kr",
 		title:"대구유입청년 경력직 일자리매칭사업",
 		url:"https://dgreturn.or.kr/",
@@ -44,14 +53,7 @@ var portfolioData = [
 		isopen: true
 	},
 	
-	{
-		id:"erp",
-		title:"ERP 유지보수",
-		url:"",
-		img:"img/site/erp.jpg",
-		detail:"Java/JSP 기반의 ERP 유지보수",
-		isopen: false
-	},
+
 
 	{
 		id:"cgjob.kr",
