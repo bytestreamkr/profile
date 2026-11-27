@@ -1,1 +1,1 @@
-var aboutData = "주로 <strong>PHP, JavaScript, jQuery, MySQL</strong> 을 사용하여 웹개발 <br/> + <strong>Java/Jsp, Oracle</strong> 유지보수 경험 <br/> + <strong>Spring Framework</strong> learning experience <br/><br/> K.D.H (flashmotion@naver.com)";
+var aboutData = "주로 <strong>PHP, MySQL, jQuery</strong> 을 사용하여 웹개발 <br/> + <strong>Java/Jsp, Oracle</strong> 유지보수 경험 <br/> + <strong>Spring Framework</strong> learning experience <br/><br/> K.D.H (flashmotion@naver.com)";
