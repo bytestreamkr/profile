@@ -25,10 +25,33 @@
 <body>
 <div class="container" id="loading_msg" style="font-weight:bold;">
 	<div class="row">
-		<div class="col text-center mt-5 font-italic">Now Loading.......</div>
+		<div>Loading... <span id="loading_spinner" class="spinner">│</span></div>
 	</div>
 </div>
 
+  <style>
+   
+    .spinner {
+      font-family: monospace;
+      font-weight: bold;
+      display: inline-block;
+      width: 1.5em; 
+      text-align: center;
+    }
+  </style>	
+	
+<script>
+    
+    const frames = ['│', '╱', '―', '╲']; 
+    let index = 0;
+    const spinnerElement = document.getElementById('loading_spinner');
+
+    setInterval(() => {
+      spinnerElement.textContent = frames[index];
+      index = (index + 1) % frames.length;
+    }, 100);
+  </script>
+	
 <div id="app" class="container" style="display:none;">
 <div class="row mt-5 div-section first">
 	<div class="col-5 col-md-2 font-italic">
